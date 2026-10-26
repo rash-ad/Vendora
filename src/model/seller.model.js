@@ -13,9 +13,38 @@ const sellerSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
-}, {
-    timestamps: true
-});
+    },
+    shopName: {
+        type: String,
+        required: true
+    },
+    shopDescription: {
+        type: String,
+        default: ""
+    },
+    businessAddress: {
+        type: String,
+        required: true
+    },
+    district: {
+        type: String,
+        required: true
+    },
+    verificationStatus: {
+        type: String,
+        enum: ["pending", "approved", "rejected","suspended"],
+        default: "pending"
+
+    
+    }, 
+    isActive: {
+        type: Boolean,
+        default: true
+    }},
+    {
+         timestamps: true
+    });
+   
+
 
 export default mongoose.model("Seller", sellerSchema);
