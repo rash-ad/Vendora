@@ -2,13 +2,35 @@ import sellerModel from "../model/seller.model.js";
 
 const registerSeller = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
-        const seller = new sellerModel({ name, email, password });
-        await seller.save();
-        res.status(201).json({ message: "Seller registered successfully", seller });
-    }   
+        const { 
+            name, 
+            email,
+            password,
+            shopName,
+            shopDescription,
+            businessAddress,
+            district
+         } = req.body;
+         
+        const seller = new sellerModel({ 
+            name,
+            email, 
+            password, 
+            shopName, 
+            shopDescription,
+            businessAddress,
+            district 
+        });
 
-    catch(error) {
+        await seller.save();
+        if (!seller) {
+            return res.status(400).json({ message: "Seller registration failed...\n All field required" });
+        }
+
+        res.status(201).json({ message: "Seller registered successfully", seller });
+    }
+
+    catch (error) {
         res.status(400).json({ message: error.message });
     }
 };
