@@ -19,7 +19,6 @@ const getAllUsers = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
-
 const getUserById = async (req, res) => {
     try {
         const user = await UserModel.findById(req.params.id);
@@ -56,4 +55,5 @@ const deleteUser = async (req, res) => {
     }
 };
 
-export   {registerUser,getAllUsers,getUserById,updateUser,deleteUser};
+export   {registerUser,getAllUsers,getUserById,updateUser,deleteUser
+};
