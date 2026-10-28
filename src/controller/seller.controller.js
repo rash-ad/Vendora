@@ -43,4 +43,9 @@ const getAllSellers = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
-export { registerSeller, getAllSellers };
+export {
+    
+     registerSeller, 
+     getAllSellers
+
+};
